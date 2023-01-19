@@ -55,7 +55,7 @@ func (s *ServerImpl) SyncFlags(req *v1.SyncFlagsRequest, stream servicev1grpc.Fl
 		})
 
 		if err != nil {
-			fmt.Sprintf("Error with stream: %s", err.Error())
+			fmt.Printf("Error with stream: %s", err.Error())
 			return err
 		}
 
@@ -76,6 +76,10 @@ func gemFlagSlice() []v1.SyncFlagsResponse {
 		{
 			Flags: readJson("flags/remove.json"),
 			State: v1.SyncState_SYNC_STATE_DELETE,
+		},
+		{
+			Flags: readJson("flags/full2.json"),
+			State: v1.SyncState_SYNC_STATE_ALL,
 		},
 	}
 }

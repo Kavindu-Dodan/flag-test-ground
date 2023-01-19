@@ -1,0 +1,28 @@
+{
+  "flags": {
+    "booleanFlag": {
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "on"
+    },
+    "intFlag": {
+      "state": "ENABLED",
+      "variants": {
+        "first": 1,
+        "second": 2
+      },
+      "defaultVariant": "first"
+    },
+    "intFlag2": {
+      "state": "ENABLED",
+      "variants": {
+        "first": 100,
+        "second": 200
+      },
+      "defaultVariant": "first"
+    }
+  }
+}
