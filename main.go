@@ -12,7 +12,7 @@ import (
 )
 
 const host = "localhost"
-const port = "8090"
+const port = "9090"
 
 func main() {
 	listen, err := net.Listen("tcp", host+":"+port)
@@ -44,7 +44,7 @@ func (s *ServerImpl) SyncFlags(req *v1.SyncFlagsRequest, stream servicev1grpc.Fl
 			fmt.Println("Error sending: " + err.Error())
 			return err
 		}
-		time.Sleep(5 * time.Second)
+		time.Sleep(10 * time.Second)
 	}
 
 	// long sleep
@@ -70,8 +70,16 @@ func gemFlagSlice() []v1.SyncFlagsResponse {
 			State: v1.SyncState_SYNC_STATE_ALL,
 		},
 		{
+			Flags: "",
+			State: v1.SyncState_SYNC_STATE_PING,
+		},
+		{
 			Flags: readJson("flags/add.json"),
 			State: v1.SyncState_SYNC_STATE_ADD,
+		},
+		{
+			Flags: "",
+			State: 41,
 		},
 		{
 			Flags: readJson("flags/remove.json"),

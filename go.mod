@@ -3,8 +3,8 @@ module server
 go 1.19
 
 require (
-	buf.build/gen/go/kavindudodan/flagd/grpc/go v1.2.0-20230119185434-46a532929237.4
-	buf.build/gen/go/kavindudodan/flagd/protocolbuffers/go v1.28.1-20230119185434-46a532929237.4
+	buf.build/gen/go/kavindudodan/flagd/grpc/go v1.2.0-20230123231905-11466466f72d.4
+	buf.build/gen/go/kavindudodan/flagd/protocolbuffers/go v1.28.1-20230123231905-11466466f72d.4
 	google.golang.org/grpc v1.52.0
 )
 
