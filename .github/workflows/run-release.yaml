@@ -6,7 +6,6 @@ on:
 name: Run Release
 jobs:
   go-release:
-    needs: release-please
     runs-on: ubuntu-latest
     if: ${{ needs.release-please.outputs.release_created }}
     steps:
