@@ -9,6 +9,27 @@ env:
 
 name: Run Release
 jobs:
+  step-1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anchore/sbom-action@v0
+        with:
+            image: ghcr.io/open-feature/flagd:v0.3.4
+            artifact-name: ${{ format('{0}-{1}-sbom.spdx',env.PROJECT, env.TAG) }}
+
+      - name: Test images signing
+        run: |
+          cosign sign --key env://COSIGN_PRIVATE_KEY --upload=false --output-signature signature.txt ghcr.io/open-feature/flagd:v0.3.4
+          cosign public-key --key
+        env:
+          COSIGN_PRIVATE_KEY: ${{secrets.COSIGN_PRIVATE_KEY}}
+          COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
+
+      - name: Release assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: signature.txt
+
   go-release:
     runs-on: ubuntu-latest
     steps:
@@ -31,8 +52,3 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: anchore/sbom-action@v0
-        with:
-          image: ghcr.io/open-feature/flagd:v0.3.4
-          artifact-name: ${{ format('{0}-{1}-sbom.spdx',env.PROJECT, env.TAG) }}
