@@ -19,13 +19,11 @@ jobs:
 
       - name: Install Cosign
         uses: sigstore/cosign-installer@main
-        with:
-          cosign-release: "v2.8.1"
 
       - name: Test images signing
         run: |
           cosign sign --key env://COSIGN_PRIVATE_KEY --upload=false --output-signature signature.txt ghcr.io/open-feature/flagd:v0.3.4
-          cosign public-key --key
+          cosign public-key --key env://COSIGN_PRIVATE_KEY
         env:
           COSIGN_PRIVATE_KEY: ${{secrets.COSIGN_PRIVATE_KEY}}
           COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
