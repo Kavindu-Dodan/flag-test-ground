@@ -6,6 +6,7 @@ on:
 env:
   PROJECT: test
   TAG : 0.6
+  PUBLIC_KEY_FILE: publicKey.pub
 
 name: Run Release
 jobs:
@@ -23,7 +24,7 @@ jobs:
       - name: Test images signing
         run: |
           cosign sign --key env://COSIGN_PRIVATE_KEY --upload=false --output-signature signature.txt ghcr.io/open-feature/flagd:v0.3.4
-          cosign public-key --key env://COSIGN_PRIVATE_KEY
+          cosign public-key --key env://COSIGN_PRIVATE_KEY  --outfile ${{ env.PUBLIC_KEY_FILE }}
         env:
           COSIGN_PRIVATE_KEY: ${{secrets.COSIGN_PRIVATE_KEY}}
           COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
@@ -31,7 +32,9 @@ jobs:
       - name: Release assets
         uses: softprops/action-gh-release@v1
         with:
-          files: signature.txt
+          files: |
+            signature.txt
+            ${{ env.PUBLIC_KEY_FILE }}
 
   go-release:
     runs-on: ubuntu-latest
