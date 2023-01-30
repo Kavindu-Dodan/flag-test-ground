@@ -7,7 +7,6 @@ name: Run Release
 jobs:
   go-release:
     runs-on: ubuntu-latest
-    if: ${{ needs.release-please.outputs.release_created }}
     steps:
       - name: Checkout
         uses: actions/checkout@latest
