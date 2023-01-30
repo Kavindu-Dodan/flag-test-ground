@@ -14,12 +14,12 @@ jobs:
           ref: ${{ needs.release-please.outputs.release_tag_name }}
 
       - name: Set up Go
-        uses: actions/setup-go@latest
+        uses: actions/setup-go@v3
         with:
           go-version: 1.18
 
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@latest
+        uses: goreleaser/goreleaser-action@v4
         with:
           args: release --rm-dist
         env:
