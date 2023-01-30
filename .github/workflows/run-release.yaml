@@ -17,6 +17,11 @@ jobs:
             image: ghcr.io/open-feature/flagd:v0.3.4
             artifact-name: ${{ format('{0}-{1}-sbom.spdx',env.PROJECT, env.TAG) }}
 
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@main
+        with:
+          cosign-release: "v2.8.1"
+
       - name: Test images signing
         run: |
           cosign sign --key env://COSIGN_PRIVATE_KEY --upload=false --output-signature signature.txt ghcr.io/open-feature/flagd:v0.3.4
