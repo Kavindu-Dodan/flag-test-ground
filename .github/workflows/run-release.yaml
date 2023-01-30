@@ -35,4 +35,4 @@ jobs:
       - uses: anchore/sbom-action@v0
         with:
           image: ghcr.io/open-feature/flagd:v0.3.4
-          artifact-name: ${{ format('{0}-{1}-sbom.spdx',env.REGISTRY, env.TAG) }}
+          artifact-name: ${{ format('{0}-{1}-sbom.spdx',env.PROJECT, env.TAG) }}
