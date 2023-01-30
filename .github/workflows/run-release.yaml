@@ -27,3 +27,8 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: anchore/sbom-action@v0
+        with:
+          image: ghcr.io/open-feature/flagd:v0.3.4
+          artifact-name: example-image-sbom.spdx
