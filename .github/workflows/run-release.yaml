@@ -3,6 +3,10 @@ on:
     tags:
       - '*'
 
+env:
+  PROJECT: test
+  TAG : 0.6
+
 name: Run Release
 jobs:
   go-release:
@@ -31,4 +35,4 @@ jobs:
       - uses: anchore/sbom-action@v0
         with:
           image: ghcr.io/open-feature/flagd:v0.3.4
-          artifact-name: example-image-sbom.spdx
+          artifact-name: ${{ format('{0}-{1}-sbom.spdx',env.REGISTRY, env.TAG) }}
