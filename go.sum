@@ -1,7 +1,7 @@
-buf.build/gen/go/kavindudodan/flagd/grpc/go v1.2.0-20230123231905-11466466f72d.4 h1:1fQv2ozb/dr74S3CPIGZunSndVzHAPeY5niWnEr0xDg=
-buf.build/gen/go/kavindudodan/flagd/grpc/go v1.2.0-20230123231905-11466466f72d.4/go.mod h1:HhDGIP35zh2M82Dx4oIzit5ZEtoOaOyy35dAr/e+Uuo=
-buf.build/gen/go/kavindudodan/flagd/protocolbuffers/go v1.28.1-20230123231905-11466466f72d.4 h1:uZNmxfZMZVrfd31Iz4YQsRa6zl4kifKUwRWjtIMz8yI=
-buf.build/gen/go/kavindudodan/flagd/protocolbuffers/go v1.28.1-20230123231905-11466466f72d.4/go.mod h1:jpjQMBqnFcgHMK99ylFu+PhUhA1KD6AC1QSz27yC/1U=
+buf.build/gen/go/kavindudodan/flagd/grpc/go v1.2.0-20230201234317-013221f6d37a.4 h1:0pM53BFVy3Xsy9IkD3pQjtIIZ6s8gvipBmfZbB2LjBM=
+buf.build/gen/go/kavindudodan/flagd/grpc/go v1.2.0-20230201234317-013221f6d37a.4/go.mod h1:1Di60p+uyAMgPXbZ9OseWUr5IrzyKsJAlur4kNkdOr0=
+buf.build/gen/go/kavindudodan/flagd/protocolbuffers/go v1.28.1-20230201234317-013221f6d37a.4 h1:Z8IagBs/ox6bgyJCM21bqOxEnopxS16onmP1HLmfo1g=
+buf.build/gen/go/kavindudodan/flagd/protocolbuffers/go v1.28.1-20230201234317-013221f6d37a.4/go.mod h1:jpjQMBqnFcgHMK99ylFu+PhUhA1KD6AC1QSz27yC/1U=
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"buf.build/gen/go/kavindudodan/flagd/grpc/go/sync/v1/servicev1grpc"
+	"buf.build/gen/go/kavindudodan/flagd/grpc/go/sync/v1/syncv1grpc"
 	v1 "buf.build/gen/go/kavindudodan/flagd/protocolbuffers/go/sync/v1"
 	"fmt"
 	"google.golang.org/grpc"
@@ -22,7 +22,7 @@ func main() {
 	}
 
 	server := grpc.NewServer()
-	servicev1grpc.RegisterFlagServiceServer(server, &ServerImpl{})
+	syncv1grpc.RegisterFlagServiceServer(server, &ServerImpl{})
 
 	fmt.Printf("Server listening : %s", host+":"+port)
 	err = server.Serve(listen)
@@ -35,7 +35,7 @@ func main() {
 type ServerImpl struct {
 }
 
-func (s *ServerImpl) SyncFlags(req *v1.SyncFlagsRequest, stream servicev1grpc.FlagService_SyncFlagsServer) error {
+func (s *ServerImpl) SyncFlags(req *v1.SyncFlagsRequest, stream syncv1grpc.FlagService_SyncFlagsServer) error {
 	log.Printf("Requesting flags for : %s", req.Key)
 
 	for _, data := range gemFlagSlice() {
