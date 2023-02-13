@@ -6,7 +6,7 @@ on:
 
 env:
   PROJECT: test
-  TAG : 0.6
+  TAG : 0.11
   PUBLIC_KEY_FILE: publicKey.pub
 
 name: Run Release
@@ -34,14 +34,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate image SBOM file name
+        id: image-sbom-id
+        run: echo "IMAG_SBOM_FILE=${{ format('flagd-{0}-sbom.spdx', env.TAG) }}" >> $GITHUB_OUTPUT
+
       - name: SBOM for latest image
         uses: anchore/sbom-action@07978da4bdb4faa726e52dfc6b1bed63d4b56479 # v0
         with:
           image: ghcr.io/open-feature/flagd:v0.3.7
-          artifact-name: flagd-v0.3.7-sbom.spdx
+          artifact-name: ${{ steps.image-sbom-id.outputs.IMAG_SBOM_FILE }}
 
       - name: Bundle release assets
         uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v1
         with:
           files: |
-            flagd-v0.3.7-sbom.spdx
+            ${{ steps.image-sbom-id.outputs.IMAG_SBOM_FILE }}
