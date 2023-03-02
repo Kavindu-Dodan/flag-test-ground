@@ -6,7 +6,7 @@ on:
 
 env:
   PROJECT: test
-  TAG: 0.11
+  TAG: 0.12
   PUBLIC_KEY_FILE: publicKey.pub
 
 name: Run Release
@@ -14,6 +14,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+        with:
+          ref: main
+
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@master
