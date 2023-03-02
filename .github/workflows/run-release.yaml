@@ -36,7 +36,7 @@ jobs:
 
   go-release:
     runs-on: ubuntu-latest
-    needs: build
+    needs: docker
     steps:
       - name: CheckDigest
         run: echo "${{ needs.docker.outputs.image_digest }}" >> $GITHUB_STEP_SUMMARY
