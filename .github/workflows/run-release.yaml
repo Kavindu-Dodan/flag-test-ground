@@ -81,16 +81,9 @@ jobs:
       - name: Tar output
         run: tar czf license.tar.gz ./license
 
-      - name: Save tar as artifact
-        id: license-tar
-        uses: actions/upload-artifact@v2
-        with:
-          name: license artefact
-          path: license.tar.gz
-
       - name: Bundle release assets
         uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v1
         with:
           files: |
             ${{ steps.image-sbom-id.outputs.IMAG_SBOM_FILE }}
-            ${{ steps.license-tar.outputs.license.tar.gz }}
+            license.tar.gz
