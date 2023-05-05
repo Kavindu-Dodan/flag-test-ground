@@ -82,6 +82,7 @@ jobs:
 
       - name: Run go-licenses
         run: go-licenses save ./ --save_path=./${{ steps.license-file-id.outputs.LICENSE_FOLDER }} --force --logtostderr=false 2> ./${{ steps.license-file-id.outputs.LICENSE_ERROR_FILE }}
+        continue-on-error: true # tool set stderr which can be ignored and referred through error artefact
 
       - name: Tar output
         run: tar czf ./${{ steps.license-file-id.outputs.LICENSE_FOLDER }}.tar.gz ./${{ steps.license-file-id.outputs .LICENSE_FOLDER }}

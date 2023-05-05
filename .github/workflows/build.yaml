@@ -15,7 +15,7 @@ jobs:
         run: go install github.com/google/go-licenses@latest
       - name: Run go-licenses
         run: go-licenses save ./ --save_path=./license --force --logtostderr=false 2> ./licenseErrors.txt
-        continue-on-error: true # ignore detection errors
+        continue-on-error: true # tool set stderr which can be ignored and referred through error artefact
       - name: Tar output
         run: tar czf license.tar.gz ./license
       - name: Save tar as artifact
