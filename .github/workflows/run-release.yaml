@@ -81,10 +81,10 @@ jobs:
         run: go install github.com/google/go-licenses@latest
 
       - name: Run go-licenses
-        run: go-licenses save ./${{ steps.license-file-id.outputs.LICENSE_FOLDER }} --save_path=./${{ steps.license-file-id.outputs.LICENSE_FOLDER }} --force --logtostderr=false 2> ${{ steps.license-file-id.outputs.LICENSE_ERROR_FILE }}
+        run: go-licenses save ./ --save_path=./${{ steps.license-file-id.outputs.LICENSE_FOLDER }} --force --logtostderr=false 2> ./${{ steps.license-file-id.outputs.LICENSE_ERROR_FILE }}
 
       - name: Tar output
-        run: tar czf ${{ steps.license-file-id.outputs.LICENSE_FOLDER }}.tar.gz ./${{ steps.license-file-id.outputs.LICENSE_FOLDER }}
+        run: tar czf ./${{ steps.license-file-id.outputs.LICENSE_FOLDER }}.tar.gz ./${{ steps.license-file-id.outputs .LICENSE_FOLDER }}
 
       - name: Bundle release assets
         uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v1
