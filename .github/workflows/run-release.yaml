@@ -80,7 +80,7 @@ jobs:
       - name: Install go-licenses
         run: go install github.com/google/go-licenses@latest
 
-      - name: Run go-licenses
+      - name: Run go-licenses and store at ${{ steps.license-file-id.outputs.LICENSE_FOLDER }}
         run: go-licenses save ./ --save_path=./${{ steps.license-file-id.outputs.LICENSE_FOLDER }} --force --logtostderr=false 2> ./${{ steps.license-file-id.outputs.LICENSE_ERROR_FILE }}
         continue-on-error: true # tool set stderr which can be ignored and referred through error artefact
 
