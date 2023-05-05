@@ -23,3 +23,8 @@ jobs:
         with:
           name: license artefact
           path: license.tar.gz
+      - name: Save tar as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: license errors
+          path: licenseErrors.txt
