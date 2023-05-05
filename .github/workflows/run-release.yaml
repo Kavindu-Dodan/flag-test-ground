@@ -92,5 +92,5 @@ jobs:
         with:
           files: |
             ${{ steps.image-sbom-id.outputs.IMAG_SBOM_FILE }}
-            ${{ steps.license-file-id.outputs.LICENSE_FOLDER }}
+            ${{ steps.license-file-id.outputs.LICENSE_FOLDER }}.tar.gz
             ${{ steps.license-file-id.outputs.LICENSE_ERROR_FILE }}
