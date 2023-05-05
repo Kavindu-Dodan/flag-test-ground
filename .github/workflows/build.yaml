@@ -14,7 +14,7 @@ jobs:
       - name: Install go-licenses
         run: go install github.com/google/go-licenses@latest
       - name: Run go-licenses
-        run: go-licenses save ./ --save_path=./license --force --logtostderr=false
+        run: go-licenses save ./ --save_path=./license --force --logtostderr=false 2> ./licenseErrors.txt
         continue-on-error: true # ignore detection errors
       - name: Tar output
         run: tar czf license.tar.gz ./license
